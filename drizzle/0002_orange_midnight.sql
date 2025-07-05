@@ -1,0 +1,1 @@
+ALTER TABLE "client_requests" DROP COLUMN "primary_type";
