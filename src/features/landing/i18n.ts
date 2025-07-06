@@ -260,11 +260,14 @@ export const landingEn = {
     header: {
         navigation: {
             home: 'Home',
+            services: 'Services',
+            portfolio: 'Portfolio',
             templates: 'Templates',
             about: 'About',
             contact: 'Contact',
         },
         themeToggle: 'Toggle theme',
+        languageToggle: 'Switch language',
         ctaButton: 'Get Started',
         mobileMenuToggle: 'Toggle menu',
     },
@@ -576,11 +579,14 @@ export const landingAr = {
     header: {
         navigation: {
             home: 'الرئيسية',
+            services: 'الخدمات',
+            portfolio: 'أعمالنا',
             templates: 'القوالب',
             about: 'حولنا',
             contact: 'اتصل بنا',
         },
         themeToggle: 'تبديل السمة',
+        languageToggle: 'تبديل اللغة',
         ctaButton: 'ابدأ الآن',
         mobileMenuToggle: 'تبديل القائمة',
     },

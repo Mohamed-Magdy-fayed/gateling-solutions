@@ -14,11 +14,11 @@ export function Header() {
   const { t, switchLanguage } = useTranslation()
 
   const navigation = [
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Templates', href: '/templates' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('header.navigation.about'), href: '/about' },
+    { name: t('header.navigation.services'), href: '/services' },
+    { name: t('header.navigation.portfolio'), href: '/portfolio' },
+    { name: t('header.navigation.templates'), href: '/templates' },
+    { name: t('header.navigation.contact'), href: '/contact' },
   ];
 
   return (
@@ -55,9 +55,9 @@ export function Header() {
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="h-9 w-9"
             >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
+              <Sun className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Moon className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <span className="sr-only">{t('header.themeToggle')}</span>
             </Button>
 
             {/* Language Toggle */}
@@ -69,13 +69,13 @@ export function Header() {
             >
               <Link href={switchLanguage()}>
                 <GlobeIcon size={20} />
-                <span className="sr-only">Toggle language</span>
+                <span className="sr-only">{t('header.languageToggle')}</span>
               </Link>
             </Button>
 
             {/* CTA Button */}
             <Button asChild className="hidden sm:inline-flex">
-              <Link href="/quote">Get Started</Link>
+              <Link href="/quote">{t('header.ctaButton')}</Link>
             </Button>
 
             {/* Mobile menu button */}
@@ -90,7 +90,7 @@ export function Header() {
               ) : (
                 <Menu className="h-5 w-5" />
               )}
-              <span className="sr-only">Toggle menu</span>
+              <span className="sr-only">{t('header.mobileMenuToggle')}</span>
             </Button>
           </div>
         </div>
@@ -112,7 +112,7 @@ export function Header() {
               <div className="px-3 py-2">
                 <Button asChild className="w-full">
                   <Link href="/quote" onClick={() => setIsMenuOpen(false)}>
-                    Get Started
+                    {t('header.ctaButton')}
                   </Link>
                 </Button>
               </div>
@@ -123,4 +123,3 @@ export function Header() {
     </header>
   );
 }
-
