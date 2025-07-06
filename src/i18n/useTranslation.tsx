@@ -2,12 +2,13 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useMemo,
   useState,
   type ReactNode,
 } from "react"
-import { initI18n, locales, type LanguageMessages } from "./lib"
+import { initI18n, Locale, locales, type LanguageMessages } from "./lib"
 import { usePathname } from "next/navigation"
 
 const TranslationContext = createContext<
@@ -16,6 +17,7 @@ const TranslationContext = createContext<
     locale: string
     userLocale: string
     isRtl: boolean
+    switchLanguage: () => string
   })
   | null
 >(null)
@@ -46,9 +48,26 @@ export function TranslationProvider({
 
   const isRtl = useMemo(() => locale === "ar", [locale])
 
+  const switchLanguage = useCallback(() => {
+    const segments = pathname.split('/').filter(Boolean);
+    const isLocalePrefixed = locales.includes(segments[0] as Locale);
+
+    if (isLocalePrefixed) {
+      if (segments[0] === "en") {
+        segments[0] = "ar";
+      } else {
+        segments[0] = "en";
+      }
+    } else {
+      segments.unshift("en");
+    }
+
+    return '/' + segments.join('/');
+  }, [pathname]);
+
   return (
     <TranslationContext.Provider
-      value={{ ...initRes, setLocale, locale, userLocale: navigator.language, isRtl }}
+      value={{ ...initRes, setLocale, locale, userLocale: navigator.language, isRtl, switchLanguage }}
     >
       {children}
     </TranslationContext.Provider>

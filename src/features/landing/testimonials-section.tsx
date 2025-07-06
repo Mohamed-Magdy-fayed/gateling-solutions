@@ -2,33 +2,36 @@
 
 import { Star, Quote } from 'lucide-react';
 import { H2, H3, P } from '@/components/ui/typography';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function TestimonialsSection() {
+  const { t } = useTranslation();
+
   const testimonials = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      company: 'Johnson Consulting',
-      role: 'CEO',
-      content: 'Gateling transformed our online presence completely. Our new website not only looks professional but has increased our lead generation by 300%. The team was responsive, professional, and delivered exactly what we needed.',
+      name: t('testimonials.clients.sarahJohnson.name'),
+      company: t('testimonials.clients.sarahJohnson.company'),
+      role: t('testimonials.clients.sarahJohnson.role'),
+      content: t('testimonials.clients.sarahJohnson.content'),
       rating: 5,
       image: '/api/placeholder/60/60',
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      company: 'TechStart Solutions',
-      role: 'Founder',
-      content: 'Working with Gateling was a game-changer for our startup. They understood our vision and created a website that perfectly represents our brand. The mobile optimization is fantastic, and our bounce rate has decreased significantly.',
+      name: t('testimonials.clients.michaelChen.name'),
+      company: t('testimonials.clients.michaelChen.company'),
+      role: t('testimonials.clients.michaelChen.role'),
+      content: t('testimonials.clients.michaelChen.content'),
       rating: 5,
       image: '/api/placeholder/60/60',
     },
     {
       id: 3,
-      name: 'Emily Rodriguez',
-      company: 'Bloom Boutique',
-      role: 'Owner',
-      content: 'I needed an e-commerce site that was both beautiful and functional. Gateling delivered beyond my expectations. Sales have increased by 250% since the launch, and customers constantly compliment the user experience.',
+      name: t('testimonials.clients.emilyRodriguez.name'),
+      company: t('testimonials.clients.emilyRodriguez.company'),
+      role: t('testimonials.clients.emilyRodriguez.role'),
+      content: t('testimonials.clients.emilyRodriguez.content'),
       rating: 5,
       image: '/api/placeholder/60/60',
     },
@@ -36,19 +39,19 @@ export function TestimonialsSection() {
 
   const stats = [
     {
-      value: '300%',
-      label: 'Average Lead Increase',
-      description: 'Our clients see significant growth in leads and conversions',
+      value: t('testimonials.stats.leadIncrease.value'),
+      label: t('testimonials.stats.leadIncrease.label'),
+      description: t('testimonials.stats.leadIncrease.description'),
     },
     {
-      value: '98%',
-      label: 'Client Satisfaction',
-      description: 'Nearly all our clients are completely satisfied with results',
+      value: t('testimonials.stats.clientSatisfaction.value'),
+      label: t('testimonials.stats.clientSatisfaction.label'),
+      description: t('testimonials.stats.clientSatisfaction.description'),
     },
     {
-      value: '2-4 Weeks',
-      label: 'Average Delivery',
-      description: 'Fast turnaround without compromising on quality',
+      value: t('testimonials.stats.averageDelivery.value'),
+      label: t('testimonials.stats.averageDelivery.label'),
+      description: t('testimonials.stats.averageDelivery.description'),
     },
   ];
 
@@ -58,18 +61,17 @@ export function TestimonialsSection() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <H2 className="text-primary mb-4">
-            What Our Clients Say About Us
+            {t('testimonials.header.title')}
           </H2>
           <P className="text-lg text-muted-foreground">
-            Don't just take our word for it. Here's what business owners say 
-            about working with Gateling and the results they've achieved.
+            {t('testimonials.header.description')}
           </P>
         </div>
 
         {/* Testimonials grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial) => (
-            <div 
+            <div
               key={testimonial.id}
               className="bg-muted/30 rounded-xl p-6 relative hover:bg-muted/50 transition-colors duration-300"
             >
@@ -112,13 +114,13 @@ export function TestimonialsSection() {
         <div className="bg-primary/5 rounded-2xl p-8 border border-primary/10">
           <div className="text-center mb-8">
             <H3 className="text-primary border-none pb-0 mb-2">
-              Results That Speak for Themselves
+              {t('testimonials.statsSection.title')}
             </H3>
             <P className="text-muted-foreground mt-0">
-              Our track record of success with businesses like yours
+              {t('testimonials.statsSection.description')}
             </P>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
               <div key={index}>
@@ -137,21 +139,21 @@ export function TestimonialsSection() {
         {/* Trust indicators */}
         <div className="mt-12 text-center">
           <P className="text-muted-foreground mb-6">
-            Trusted by 500+ businesses across industries
+            {t('testimonials.trustIndicators.description')}
           </P>
           <div className="flex justify-center items-center gap-8 opacity-60">
             {/* Placeholder for industry badges/certifications */}
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-muted rounded" />
-              <span className="text-sm">WordPress Certified</span>
+              <span className="text-sm">{t('testimonials.trustIndicators.wordpressCertified')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-muted rounded" />
-              <span className="text-sm">Google Partner</span>
+              <span className="text-sm">{t('testimonials.trustIndicators.googlePartner')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-muted rounded" />
-              <span className="text-sm">SSL Secured</span>
+              <span className="text-sm">{t('testimonials.trustIndicators.sslSecured')}</span>
             </div>
           </div>
         </div>
@@ -159,4 +161,3 @@ export function TestimonialsSection() {
     </section>
   );
 }
-

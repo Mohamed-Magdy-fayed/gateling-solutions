@@ -2,28 +2,31 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, GlobeIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { APP_CONFIG } from '@/constants';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t, switchLanguage } = useTranslation()
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Templates', href: '/templates' },
     { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Templates', href: '/templates' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 gap-4 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 whitespace-nowrap">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">G</span>
             </div>
@@ -31,7 +34,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -57,6 +60,19 @@ export function Header() {
               <span className="sr-only">Toggle theme</span>
             </Button>
 
+            {/* Language Toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9"
+              asChild
+            >
+              <Link href={switchLanguage()}>
+                <GlobeIcon size={20} />
+                <span className="sr-only">Toggle language</span>
+              </Link>
+            </Button>
+
             {/* CTA Button */}
             <Button asChild className="hidden sm:inline-flex">
               <Link href="/quote">Get Started</Link>
@@ -66,7 +82,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="lg:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
@@ -81,7 +97,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t">
               {navigation.map((item) => (
                 <Link

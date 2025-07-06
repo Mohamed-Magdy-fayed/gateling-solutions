@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -5,22 +6,23 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { H1, Lead, P } from '@/components/ui/typography';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useMemo } from 'react';
 
 export function HeroSection() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation();
 
-  const trustIndicators = [
-    '500+ Websites Delivered',
-    '98% Client Satisfaction',
-    '24/7 Support',
-  ];
+  const trustIndicators = useMemo(() => [
+    t('hero.trustIndicators.websitesDelivered'),
+    t('hero.trustIndicators.clientSatisfaction'),
+    t('hero.trustIndicators.support'),
+  ], [locale]);
 
-  const benefits = [
-    'Professional WordPress websites that convert visitors into customers',
-    'Custom designs tailored to your brand and business goals',
-    'Mobile-responsive and SEO-optimized for maximum reach',
-    'Ongoing support and maintenance included',
-  ];
+  const benefits = useMemo(() => [
+    t('hero.benefits.professionalWebsites'),
+    t('hero.benefits.customDesigns'),
+    t('hero.benefits.mobileResponsive'),
+    t('hero.benefits.ongoingSupport'),
+  ], [locale]);
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-accent/20 py-20 sm:py-32">
@@ -47,12 +49,11 @@ export function HeroSection() {
             {/* Main headline */}
             <div className="space-y-4">
               <H1 className="text-primary">
-                Transform Your Business with a
-                <span className="block">Professional WordPress Website</span>
+                {t('hero.mainHeadline.part1')}
+                <span className="block">{t('hero.mainHeadline.part2')}</span>
               </H1>
               <Lead className="text-foreground/80 max-w-xl">
-                Get a custom WordPress website that attracts customers, builds trust,
-                and grows your business. From concept to launch, we handle everything.
+                {t('hero.leadText')}
               </Lead>
             </div>
 
@@ -70,13 +71,13 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button asChild size="lg" className="text-lg px-8">
                 <Link href="/quote">
-                  Get Your Free Quote
+                  {t('hero.cta.getFreeQuote')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="text-lg px-8">
                 <Link href="/templates">
-                  View Templates
+                  {t('hero.cta.viewTemplates')}
                 </Link>
               </Button>
             </div>
@@ -84,7 +85,7 @@ export function HeroSection() {
             {/* Social proof */}
             <div className="pt-8 border-t border-border/50">
               <P className="text-sm text-muted-foreground mb-4">
-                Trusted by businesses across industries
+                {t('hero.socialProof')}
               </P>
               <div className="flex items-center gap-6 opacity-60">
                 {/* Placeholder for client logos */}
@@ -129,7 +130,7 @@ export function HeroSection() {
               <div className="absolute -bottom-4 -left-4 bg-background border border-border rounded-lg p-3 shadow-lg">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-medium">Live</span>
+                  <span className="text-xs font-medium">{t('hero.liveIndicator')}</span>
                 </div>
               </div>
             </div>
@@ -139,4 +140,3 @@ export function HeroSection() {
     </section>
   );
 }
-

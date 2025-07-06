@@ -5,6 +5,7 @@ import { Providers } from '@/components/providers';
 import { APP_CONFIG } from '@/constants';
 import './globals.css';
 import { Locale, locales } from '@/i18n/lib';
+import type translations from "@/i18n/global/en"
 
 export const metadata: Metadata = {
   title: {
@@ -74,3 +75,8 @@ export default async function RootLayout({
   );
 }
 
+declare module "@/i18n/lib/my-translations" {
+  interface Register {
+    translations: typeof translations
+  }
+}

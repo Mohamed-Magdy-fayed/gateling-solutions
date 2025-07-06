@@ -1,58 +1,61 @@
 'use client';
 
-import { 
-  MessageSquare, 
-  Lightbulb, 
-  Code, 
+import {
+  MessageSquare,
+  Lightbulb,
+  Code,
   Rocket,
   ArrowRight
 } from 'lucide-react';
 import { H2, H3, P } from '@/components/ui/typography';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function ProcessSection() {
+  const { t } = useTranslation();
+
   const steps = [
     {
       icon: MessageSquare,
-      title: 'Discovery & Planning',
-      description: 'We start with a detailed consultation to understand your business, goals, and requirements.',
+      title: t('process.steps.discoveryPlanning.title'),
+      description: t('process.steps.discoveryPlanning.description'),
       details: [
-        'Business analysis',
-        'Target audience research',
-        'Competitor analysis',
-        'Project timeline',
+        t('process.steps.discoveryPlanning.details.businessAnalysis'),
+        t('process.steps.discoveryPlanning.details.targetAudienceResearch'),
+        t('process.steps.discoveryPlanning.details.competitorAnalysis'),
+        t('process.steps.discoveryPlanning.details.projectTimeline'),
       ],
     },
     {
       icon: Lightbulb,
-      title: 'Design & Strategy',
-      description: 'Our team creates a custom design strategy that aligns with your brand and conversion goals.',
+      title: t('process.steps.designStrategy.title'),
+      description: t('process.steps.designStrategy.description'),
       details: [
-        'Custom design mockups',
-        'User experience planning',
-        'Content strategy',
-        'SEO planning',
+        t('process.steps.designStrategy.details.customDesignMockups'),
+        t('process.steps.designStrategy.details.userExperiencePlanning'),
+        t('process.steps.designStrategy.details.contentStrategy'),
+        t('process.steps.designStrategy.details.seoPlanning'),
       ],
     },
     {
       icon: Code,
-      title: 'Development & Testing',
-      description: 'We build your website using best practices, ensuring it\'s fast, secure, and mobile-friendly.',
+      title: t('process.steps.developmentTesting.title'),
+      description: t('process.steps.developmentTesting.description'),
       details: [
-        'WordPress development',
-        'Mobile optimization',
-        'Speed optimization',
-        'Security implementation',
+        t('process.steps.developmentTesting.details.wordpressDevelopment'),
+        t('process.steps.developmentTesting.details.mobileOptimization'),
+        t('process.steps.developmentTesting.details.speedOptimization'),
+        t('process.steps.developmentTesting.details.securityImplementation'),
       ],
     },
     {
       icon: Rocket,
-      title: 'Launch & Support',
-      description: 'We launch your website and provide ongoing support to ensure continued success.',
+      title: t('process.steps.launchSupport.title'),
+      description: t('process.steps.launchSupport.description'),
       details: [
-        'Website launch',
-        'Training & documentation',
-        'Ongoing maintenance',
-        '24/7 support',
+        t('process.steps.launchSupport.details.websiteLaunch'),
+        t('process.steps.launchSupport.details.trainingDocumentation'),
+        t('process.steps.launchSupport.details.ongoingMaintenance'),
+        t('process.steps.launchSupport.details.support'),
       ],
     },
   ];
@@ -63,11 +66,10 @@ export function ProcessSection() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <H2 className="text-primary mb-4">
-            Our Proven 4-Step Process
+            {t("process.header.title")}
           </H2>
           <P className="text-lg text-muted-foreground">
-            From initial consultation to launch and beyond, we guide you through 
-            every step of creating your perfect WordPress website.
+            {t("process.header.description")}
           </P>
         </div>
 
@@ -75,7 +77,7 @@ export function ProcessSection() {
         <div className="relative">
           {/* Connection line for desktop */}
           <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-border/50" />
-          
+
           <div className="grid lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="relative">
@@ -124,28 +126,27 @@ export function ProcessSection() {
         {/* Timeline info */}
         <div className="mt-16 text-center bg-background rounded-xl p-8 shadow-sm border border-border/50">
           <H3 className="text-primary mb-4 border-none pb-0">
-            Typical Project Timeline
+            {t("process.timeline.title")}
           </H3>
           <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
             <div>
-              <div className="text-2xl font-bold text-primary mb-2">1-2 Days</div>
-              <P className="text-muted-foreground text-sm mt-0">Discovery & Planning</P>
+              <div className="text-2xl font-bold text-primary mb-2">{t("process.timeline.timeframes.discoveryDays")}</div>
+              <P className="text-muted-foreground text-sm mt-0">{t("process.timeline.discoveryPlanning")}</P>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary mb-2">1-2 Weeks</div>
-              <P className="text-muted-foreground text-sm mt-0">Design & Development</P>
+              <div className="text-2xl font-bold text-primary mb-2">{t("process.timeline.timeframes.designWeeks")}</div>
+              <P className="text-muted-foreground text-sm mt-0">{t("process.timeline.designDevelopment")}</P>
             </div>
             <div>
-              <div className="text-2xl font-bold text-primary mb-2">2-3 Days</div>
-              <P className="text-muted-foreground text-sm mt-0">Testing & Launch</P>
+              <div className="text-2xl font-bold text-primary mb-2">{t("process.timeline.timeframes.testingDays")}</div>
+              <P className="text-muted-foreground text-sm mt-0">{t("process.timeline.testingLaunch")}</P>
             </div>
           </div>
           <P className="text-muted-foreground mt-6">
-            Most projects are completed within 2-4 weeks from start to finish
+            {t("process.timeline.description")}
           </P>
         </div>
       </div>
     </section>
   );
 }
-

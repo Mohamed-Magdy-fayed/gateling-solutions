@@ -1,3 +1,4 @@
+import { landingEn } from "@/features/landing/i18n"
 import { dt, type LanguageMessages } from "../lib"
 
 export default {
@@ -67,4 +68,5 @@ export default {
   "selectedRows": dt("{selected:number} of {total:number} {row:plural} selected.", {
     plural: { row: { one: "Row", many: "Rows", other: "Rows" } }
   }),
+  ...landingEn
 } as const satisfies LanguageMessages

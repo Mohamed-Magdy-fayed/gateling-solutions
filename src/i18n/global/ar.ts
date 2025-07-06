@@ -1,3 +1,4 @@
+import { landingAr } from "@/features/landing/i18n"
 import { dt, type LanguageMessages } from "../lib"
 
 export default {
@@ -69,4 +70,5 @@ export default {
   "selectedRows": dt("قمت بإختيار {selected:number} من {total:number} {row:plural}.", {
     plural: { row: { one: "صف", many: "صفوف", other: "صفوف" } }
   }),
+  ...landingAr,
 } as const satisfies LanguageMessages

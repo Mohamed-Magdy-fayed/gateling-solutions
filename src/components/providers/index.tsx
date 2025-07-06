@@ -1,6 +1,9 @@
 'use client';
 
-import { ThemeProvider } from './theme-provider';
+import { ThemeProvider } from 'next-themes';
+import { TranslationProvider } from '@/i18n/useTranslation';
+import en from '@/i18n/global/en';
+import ar from '@/i18n/global/ar';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -8,9 +11,22 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider>
-      {children}
-    </ThemeProvider>
+    <TranslationProvider
+      fallbackLocale={["en"]}
+      translations={{
+        en,
+        ar,
+      }}
+    >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
+    </TranslationProvider>
   );
 }
 

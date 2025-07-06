@@ -5,43 +5,46 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { H2, H3, P } from '@/components/ui/typography';
 import { TEMPLATE_CATEGORIES } from '@/constants';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function TemplatePreviewSection() {
+  const { t } = useTranslation();
+
   const featuredTemplates = [
     {
       id: 1,
-      name: 'Professional Business',
+      name: t('templatePreview.featuredTemplates.professionalBusiness.name'),
       category: 'business',
       image: '/api/placeholder/400/300',
       isPremium: false,
-      description: 'Clean, professional design perfect for service businesses',
+      description: t('templatePreview.featuredTemplates.professionalBusiness.description'),
       demoUrl: '#',
     },
     {
       id: 2,
-      name: 'Modern E-commerce',
+      name: t('templatePreview.featuredTemplates.modernEcommerce.name'),
       category: 'ecommerce',
       image: '/api/placeholder/400/300',
       isPremium: true,
-      description: 'Feature-rich online store with advanced functionality',
+      description: t('templatePreview.featuredTemplates.modernEcommerce.description'),
       demoUrl: '#',
     },
     {
       id: 3,
-      name: 'Creative Portfolio',
+      name: t('templatePreview.featuredTemplates.creativePortfolio.name'),
       category: 'portfolio',
       image: '/api/placeholder/400/300',
       isPremium: false,
-      description: 'Stunning showcase for creative professionals',
+      description: t('templatePreview.featuredTemplates.creativePortfolio.description'),
       demoUrl: '#',
     },
     {
       id: 4,
-      name: 'Restaurant & Food',
+      name: t('templatePreview.featuredTemplates.restaurantFood.name'),
       category: 'business',
       image: '/api/placeholder/400/300',
       isPremium: true,
-      description: 'Appetizing design for restaurants and food businesses',
+      description: t('templatePreview.featuredTemplates.restaurantFood.description'),
       demoUrl: '#',
     },
   ];
@@ -54,11 +57,10 @@ export function TemplatePreviewSection() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <H2 className="text-primary mb-4">
-            Choose from Our Premium WordPress Templates
+            {t('templatePreview.header.title')}
           </H2>
           <P className="text-lg text-muted-foreground">
-            Start with a professionally designed template and customize it to match 
-            your brand. All templates are mobile-responsive and SEO-optimized.
+            {t('templatePreview.header.description')}
           </P>
         </div>
 
@@ -84,7 +86,7 @@ export function TemplatePreviewSection() {
         {/* Featured templates */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {featuredTemplates.map((template) => (
-            <div 
+            <div
               key={template.id}
               className="group bg-background rounded-xl overflow-hidden shadow-sm border border-border/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
@@ -94,14 +96,14 @@ export function TemplatePreviewSection() {
                 <div className="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-primary/20 rounded-lg mx-auto mb-2" />
-                    <P className="text-xs text-muted-foreground mt-0">Template Preview</P>
+                    <P className="text-xs text-muted-foreground mt-0">{t('templatePreview.templateImagePlaceholder')}</P>
                   </div>
                 </div>
-                
+
                 {/* Premium badge */}
                 {template.isPremium && (
                   <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-full font-medium">
-                    Premium
+                    {t('templatePreview.premiumBadge')}
                   </div>
                 )}
 
@@ -111,12 +113,12 @@ export function TemplatePreviewSection() {
                     <Button size="sm" variant="secondary" asChild>
                       <Link href={template.demoUrl}>
                         <ExternalLink className="h-4 w-4 mr-1" />
-                        Demo
+                        {t('templatePreview.demoButton')}
                       </Link>
                     </Button>
                     <Button size="sm" asChild>
                       <Link href="/quote">
-                        Use This
+                        {t('templatePreview.useThisButton')}
                       </Link>
                     </Button>
                   </div>
@@ -136,11 +138,11 @@ export function TemplatePreviewSection() {
                 </P>
                 <div className="flex items-center justify-between mt-3">
                   <span className="text-sm font-medium text-primary">
-                    {template.isPremium ? 'Premium' : 'Free'}
+                    {template.isPremium ? t('templatePreview.premiumText') : t('templatePreview.freeText')}
                   </span>
                   <Button variant="ghost" size="sm" asChild>
                     <Link href={template.demoUrl}>
-                      View Details
+                      {t('templatePreview.viewDetailsButton')}
                       <ArrowRight className="h-3 w-3 ml-1" />
                     </Link>
                   </Button>
@@ -154,16 +156,15 @@ export function TemplatePreviewSection() {
         <div className="text-center">
           <Button asChild size="lg" className="text-lg px-8">
             <Link href="/templates">
-              View All Templates
+              {t('templatePreview.viewAllTemplatesButton')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <P className="text-muted-foreground mt-4">
-            Over 50+ professional templates to choose from
+            {t('templatePreview.ctaDescription')}
           </P>
         </div>
       </div>
     </section>
   );
 }
-

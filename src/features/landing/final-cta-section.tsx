@@ -5,40 +5,43 @@ import { ArrowRight, Phone, Mail, MessageCircle, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { H2, H3, P } from '@/components/ui/typography';
 import { APP_CONFIG } from '@/constants';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function FinalCtaSection() {
+  const { t } = useTranslation();
+
   const contactMethods = [
     {
       icon: Phone,
-      title: 'Call Us',
-      description: 'Speak directly with our team',
-      action: 'Call Now',
+      title: t('finalCta.contactMethods.callUs.title'),
+      description: t('finalCta.contactMethods.callUs.description'),
+      action: t('finalCta.contactMethods.callUs.action'),
       href: `tel:${APP_CONFIG.phone}`,
       value: APP_CONFIG.phone,
     },
     {
       icon: Mail,
-      title: 'Email Us',
-      description: 'Get a detailed response within 24 hours',
-      action: 'Send Email',
+      title: t('finalCta.contactMethods.emailUs.title'),
+      description: t('finalCta.contactMethods.emailUs.description'),
+      action: t('finalCta.contactMethods.emailUs.action'),
       href: `mailto:${APP_CONFIG.email}`,
       value: APP_CONFIG.email,
     },
     {
       icon: MessageCircle,
-      title: 'Live Chat',
-      description: 'Chat with us in real-time',
-      action: 'Start Chat',
+      title: t('finalCta.contactMethods.liveChat.title'),
+      description: t('finalCta.contactMethods.liveChat.description'),
+      action: t('finalCta.contactMethods.liveChat.action'),
       href: '#',
-      value: 'Available 9AM-6PM EST',
+      value: t('finalCta.contactMethods.liveChat.value'),
     },
   ];
 
   const urgencyFactors = [
-    'Free consultation (limited time)',
-    'Priority booking for new clients',
-    'Special launch month pricing',
-    '30-day money-back guarantee',
+    t('finalCta.urgencyFactors.freeConsultation'),
+    t('finalCta.urgencyFactors.priorityBooking'),
+    t('finalCta.urgencyFactors.specialPricing'),
+    t('finalCta.urgencyFactors.moneyBackGuarantee'),
   ];
 
   return (
@@ -54,24 +57,23 @@ export function FinalCtaSection() {
           {/* Main CTA */}
           <div className="mb-12">
             <H2 className="text-primary mb-4">
-              Ready to Transform Your Business Online?
+              {t('finalCta.mainCta.title')}
             </H2>
             <P className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join hundreds of successful businesses who have grown their revenue 
-              with a professional WordPress website. Get started today with a free consultation.
+              {t('finalCta.mainCta.description')}
             </P>
 
             {/* Primary CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button asChild size="lg" className="text-lg px-8 py-6">
                 <Link href="/quote">
-                  Get Your Free Quote Now
+                  {t('finalCta.mainCta.getQuoteButton')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild className="text-lg px-8 py-6">
                 <Link href="/templates">
-                  Browse Templates
+                  {t('finalCta.mainCta.browseTemplatesButton')}
                 </Link>
               </Button>
             </div>
@@ -90,9 +92,9 @@ export function FinalCtaSection() {
           {/* Contact methods */}
           <div className="bg-background/80 backdrop-blur rounded-2xl p-8 shadow-lg border border-border/50">
             <H3 className="text-primary mb-6 border-none pb-0">
-              Multiple Ways to Get Started
+              {t('finalCta.contactMethods.header')}
             </H3>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {contactMethods.map((method, index) => (
                 <div key={index} className="text-center group">
@@ -119,10 +121,10 @@ export function FinalCtaSection() {
           {/* Final reassurance */}
           <div className="mt-12 text-center">
             <P className="text-muted-foreground mb-4">
-              🔒 Your information is secure and will never be shared
+              {t('finalCta.finalReassurance.secureInfo')}
             </P>
             <P className="text-sm text-muted-foreground">
-              Trusted by 500+ businesses • 98% satisfaction rate • 5-star reviews
+              {t('finalCta.finalReassurance.stats')}
             </P>
           </div>
         </div>
@@ -130,4 +132,3 @@ export function FinalCtaSection() {
     </section>
   );
 }
-

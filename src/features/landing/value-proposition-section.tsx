@@ -1,61 +1,64 @@
-'use client';
+"use client"
 
-import { 
-  Zap, 
-  Shield, 
-  Smartphone, 
-  Search, 
-  Headphones, 
+import {
+  Zap,
+  Shield,
+  Smartphone,
+  Search,
+  Headphones,
   TrendingUp,
   Clock,
   Award
 } from 'lucide-react';
 import { H2, H3, P } from '@/components/ui/typography';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function ValuePropositionSection() {
+  const { t } = useTranslation();
+
   const mainBenefits = [
     {
       icon: Zap,
-      title: 'Lightning Fast',
-      description: 'Optimized for speed and performance to keep visitors engaged and improve search rankings.',
+      title: t('valueProposition.mainBenefits.lightningFast.title'),
+      description: t('valueProposition.mainBenefits.lightningFast.description'),
     },
     {
       icon: Smartphone,
-      title: 'Mobile Responsive',
-      description: 'Perfect display on all devices - desktop, tablet, and mobile for maximum reach.',
+      title: t('valueProposition.mainBenefits.mobileResponsive.title'),
+      description: t('valueProposition.mainBenefits.mobileResponsive.description'),
     },
     {
       icon: Search,
-      title: 'SEO Optimized',
-      description: 'Built with search engine optimization best practices to help customers find you online.',
+      title: t('valueProposition.mainBenefits.seoOptimized.title'),
+      description: t('valueProposition.mainBenefits.seoOptimized.description'),
     },
     {
       icon: Shield,
-      title: 'Secure & Reliable',
-      description: 'Enterprise-grade security and reliable hosting to protect your business and customers.',
+      title: t('valueProposition.mainBenefits.secureReliable.title'),
+      description: t('valueProposition.mainBenefits.secureReliable.description'),
     },
   ];
 
   const additionalBenefits = [
     {
       icon: Clock,
-      title: 'Quick Turnaround',
-      description: 'Most projects completed within 2-4 weeks',
+      title: t('valueProposition.additionalBenefits.quickTurnaround.title'),
+      description: t('valueProposition.additionalBenefits.quickTurnaround.description'),
     },
     {
       icon: Headphones,
-      title: '24/7 Support',
-      description: 'Ongoing maintenance and support included',
+      title: t('valueProposition.additionalBenefits.support.title'),
+      description: t('valueProposition.additionalBenefits.support.description'),
     },
     {
       icon: TrendingUp,
-      title: 'Conversion Focused',
-      description: 'Designed to turn visitors into customers',
+      title: t('valueProposition.additionalBenefits.conversionFocused.title'),
+      description: t('valueProposition.additionalBenefits.conversionFocused.description'),
     },
     {
       icon: Award,
-      title: 'Quality Guaranteed',
-      description: '100% satisfaction guarantee on all projects',
+      title: t('valueProposition.additionalBenefits.qualityGuaranteed.title'),
+      description: t('valueProposition.additionalBenefits.qualityGuaranteed.description'),
     },
   ];
 
@@ -65,18 +68,17 @@ export function ValuePropositionSection() {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <H2 className="text-primary mb-4">
-            Why Choose Gateling for Your WordPress Website?
+            {t('valueProposition.header.title')}
           </H2>
           <P className="text-lg text-muted-foreground">
-            We combine technical expertise with business strategy to create websites 
-            that not only look great but drive real results for your business.
+            {t('valueProposition.header.description')}
           </P>
         </div>
 
         {/* Main benefits grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {mainBenefits.map((benefit, index) => (
-            <div 
+            <div
               key={index}
               className="group bg-background rounded-xl p-6 shadow-sm border border-border/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
@@ -97,10 +99,10 @@ export function ValuePropositionSection() {
         <div className="bg-background rounded-2xl p-8 shadow-sm border border-border/50">
           <div className="text-center mb-8">
             <H3 className="text-primary border-none pb-0">
-              Everything You Need for Online Success
+              {t('valueProposition.additionalBenefitsHeader')}
             </H3>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {additionalBenefits.map((benefit, index) => (
               <div key={index} className="text-center group">
@@ -120,23 +122,22 @@ export function ValuePropositionSection() {
         <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
             <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <P className="text-muted-foreground text-sm mt-0">Websites Delivered</P>
+            <P className="text-muted-foreground text-sm mt-0">{t('valueProposition.stats.websitesDelivered')}</P>
           </div>
           <div>
             <div className="text-3xl font-bold text-primary mb-2">98%</div>
-            <P className="text-muted-foreground text-sm mt-0">Client Satisfaction</P>
+            <P className="text-muted-foreground text-sm mt-0">{t('valueProposition.stats.clientSatisfaction')}</P>
           </div>
           <div>
             <div className="text-3xl font-bold text-primary mb-2">5+</div>
-            <P className="text-muted-foreground text-sm mt-0">Years Experience</P>
+            <P className="text-muted-foreground text-sm mt-0">{t('valueProposition.stats.yearsExperience')}</P>
           </div>
           <div>
             <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-            <P className="text-muted-foreground text-sm mt-0">Support Available</P>
+            <P className="text-muted-foreground text-sm mt-0">{t('valueProposition.stats.supportAvailable')}</P>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

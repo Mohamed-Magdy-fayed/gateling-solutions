@@ -4,43 +4,46 @@ import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { H3, P } from '@/components/ui/typography';
 import { APP_CONFIG } from '@/constants';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function Footer() {
+  const { t } = useTranslation();
+
   const navigation = {
     services: [
-      { name: 'WordPress Development', href: '/services/wordpress' },
-      { name: 'Website Design', href: '/services/design' },
-      { name: 'E-commerce Solutions', href: '/services/ecommerce' },
-      { name: 'SEO Optimization', href: '/services/seo' },
-      { name: 'Website Maintenance', href: '/services/maintenance' },
+      { name: t("footer.navigation.services.wordpressDevelopment"), href: "/services/wordpress" },
+      { name: t("footer.navigation.services.websiteDesign"), href: "/services/design" },
+      { name: t("footer.navigation.services.ecommerceSolutions"), href: "/services/ecommerce" },
+      { name: t("footer.navigation.services.seoOptimization"), href: "/services/seo" },
+      { name: t("footer.navigation.services.websiteMaintenance"), href: "/services/maintenance" },
     ],
     company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Our Process', href: '/process' },
-      { name: 'Portfolio', href: '/portfolio' },
-      { name: 'Testimonials', href: '/testimonials' },
-      { name: 'Blog', href: '/blog' },
+      { name: t("footer.navigation.company.aboutUs"), href: "/about" },
+      { name: t("footer.navigation.company.ourProcess"), href: "/process" },
+      { name: t("footer.navigation.company.portfolio"), href: "/portfolio" },
+      { name: t("footer.navigation.company.testimonials"), href: "/testimonials" },
+      { name: t("footer.navigation.company.blog"), href: "/blog" },
     ],
     resources: [
-      { name: 'Templates', href: '/templates' },
-      { name: 'Pricing', href: '/pricing' },
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Support', href: '/support' },
-      { name: 'Contact', href: '/contact' },
+      { name: t("footer.navigation.resources.templates"), href: "/templates" },
+      { name: t("footer.navigation.resources.pricing"), href: "/pricing" },
+      { name: t("footer.navigation.resources.faq"), href: "/faq" },
+      { name: t("footer.navigation.resources.support"), href: "/support" },
+      { name: t("footer.navigation.resources.contact"), href: "/contact" },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
-      { name: 'Cookie Policy', href: '/cookies' },
-      { name: 'Refund Policy', href: '/refund' },
+      { name: t("footer.navigation.legal.privacyPolicy"), href: "/privacy" },
+      { name: t("footer.navigation.legal.termsOfService"), href: "/terms" },
+      { name: t("footer.navigation.legal.cookiePolicy"), href: "/cookies" },
+      { name: t("footer.navigation.legal.refundPolicy"), href: "/refund" },
     ],
   };
 
   const socialLinks = [
-    { name: 'Facebook', href: '#', icon: Facebook },
-    { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Instagram', href: '#', icon: Instagram },
+    { name: "Facebook", href: "#", icon: Facebook },
+    { name: "Twitter", href: "#", icon: Twitter },
+    { name: "LinkedIn", href: "#", icon: Linkedin },
+    { name: "Instagram", href: "#", icon: Instagram },
   ];
 
   return (
@@ -57,11 +60,9 @@ export function Footer() {
                 </div>
                 <span className="font-bold text-xl text-foreground">{APP_CONFIG.name}</span>
               </Link>
-              
+
               <P className="text-muted-foreground mb-6 max-w-md mt-0">
-                Professional WordPress website development services that help businesses 
-                grow online. From concept to launch, we create websites that convert 
-                visitors into customers.
+                {t("footer.companyInfo.description")}
               </P>
 
               {/* Contact info */}
@@ -81,7 +82,7 @@ export function Footer() {
                 <div className="flex items-center gap-3 text-sm">
                   <MapPin className="h-4 w-4 text-primary" />
                   <span className="text-muted-foreground">
-                    Remote Team • Serving Clients Worldwide
+                    {t("footer.companyInfo.location")}
                   </span>
                 </div>
               </div>
@@ -103,7 +104,7 @@ export function Footer() {
 
             {/* Navigation links */}
             <div>
-              <H3 className="text-foreground mb-4 border-none pb-0">Services</H3>
+              <H3 className="text-foreground mb-4 border-none pb-0">{t("footer.navigation.services.title")}</H3>
               <ul className="space-y-3">
                 {navigation.services.map((item) => (
                   <li key={item.name}>
@@ -119,7 +120,7 @@ export function Footer() {
             </div>
 
             <div>
-              <H3 className="text-foreground mb-4 border-none pb-0">Company</H3>
+              <H3 className="text-foreground mb-4 border-none pb-0">{t("footer.navigation.company.title")}</H3>
               <ul className="space-y-3">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
@@ -135,7 +136,7 @@ export function Footer() {
             </div>
 
             <div>
-              <H3 className="text-foreground mb-4 border-none pb-0">Resources</H3>
+              <H3 className="text-foreground mb-4 border-none pb-0">{t("footer.navigation.resources.title")}</H3>
               <ul className="space-y-3 mb-6">
                 {navigation.resources.map((item) => (
                   <li key={item.name}>
@@ -151,18 +152,18 @@ export function Footer() {
 
               {/* Newsletter signup */}
               <div className="bg-background rounded-lg p-4 border border-border/50">
-                <H3 className="text-sm mb-2 border-none pb-0">Stay Updated</H3>
+                <H3 className="text-sm mb-2 border-none pb-0">{t("footer.newsletter.title")}</H3>
                 <P className="text-xs text-muted-foreground mb-3 mt-0">
-                  Get tips and insights delivered to your inbox
+                  {t("footer.newsletter.description")}
                 </P>
                 <div className="flex items-center gap-2">
                   <input
                     type="email"
-                    placeholder="Enter email"
+                    placeholder={t("footer.newsletter.placeholder")}
                     className="flex-1 min-w-0 px-3 py-2 text-xs bg-background border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary/20"
                   />
                   <button className="px-3 py-2 bg-primary text-primary-foreground text-xs rounded hover:bg-primary/90 transition-colors">
-                    Subscribe
+                    {t("footer.newsletter.subscribeButton")}
                   </button>
                 </div>
               </div>
@@ -174,9 +175,9 @@ export function Footer() {
         <div className="py-6 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <P className="text-sm text-muted-foreground mt-0">
-              © {new Date().getFullYear()} {APP_CONFIG.name}. All rights reserved.
+              {t("footer.copyright", { year: `${new Date().getFullYear()}`, appName: APP_CONFIG.name })}
             </P>
-            
+
             <div className="flex items-center gap-6">
               {navigation.legal.map((item) => (
                 <Link
@@ -194,4 +195,3 @@ export function Footer() {
     </footer>
   );
 }
-
