@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Providers } from '@/components/providers';
 import { APP_CONFIG } from '@/constants';
 import './globals.css';
+import { Locale, locales } from '@/i18n/lib';
 
 export const metadata: Metadata = {
   title: {
@@ -47,14 +48,21 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map(locale => ({ lang: locale }))
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: Locale }>;
 }) {
+  const { lang } = await params
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body 
+    <html lang="en" suppressHydrationWarning dir={lang === "ar" ? "rtl" : "ltr"}>
+      <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >

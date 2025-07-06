@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { H1, Lead, P } from '@/components/ui/typography';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export function HeroSection() {
+  const { t } = useTranslation()
+
   const trustIndicators = [
     '500+ Websites Delivered',
     '98% Client Satisfaction',
@@ -44,11 +47,11 @@ export function HeroSection() {
             {/* Main headline */}
             <div className="space-y-4">
               <H1 className="text-primary">
-                Transform Your Business with a 
+                Transform Your Business with a
                 <span className="block">Professional WordPress Website</span>
               </H1>
               <Lead className="text-foreground/80 max-w-xl">
-                Get a custom WordPress website that attracts customers, builds trust, 
+                Get a custom WordPress website that attracts customers, builds trust,
                 and grows your business. From concept to launch, we handle everything.
               </Lead>
             </div>
@@ -118,7 +121,7 @@ export function HeroSection() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-full p-3 shadow-lg">
                 <CheckCircle className="h-6 w-6" />

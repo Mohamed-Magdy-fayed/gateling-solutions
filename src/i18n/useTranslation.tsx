@@ -47,11 +47,11 @@ export function TranslationProvider({
   const isRtl = useMemo(() => locale === "ar", [locale])
 
   return (
-    <TranslationContext
+    <TranslationContext.Provider
       value={{ ...initRes, setLocale, locale, userLocale: navigator.language, isRtl }}
     >
       {children}
-    </TranslationContext>
+    </TranslationContext.Provider>
   )
 }
 
