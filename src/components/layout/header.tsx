@@ -14,6 +14,7 @@ export function Header() {
   const { t, switchLanguage } = useTranslation()
 
   const navigation = [
+    { name: t('header.navigation.home'), href: '/' },
     { name: t('header.navigation.about'), href: '/about' },
     { name: t('header.navigation.services'), href: '/services' },
     { name: t('header.navigation.portfolio'), href: '/portfolio' },

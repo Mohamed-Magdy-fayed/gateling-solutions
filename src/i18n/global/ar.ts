@@ -1,5 +1,6 @@
 import { landingAr } from "@/features/landing/i18n"
 import { dt, type LanguageMessages } from "../lib"
+import { adminAr } from "@/features/admin-dashboard/i18n"
 
 export default {
   locale: "ar",
@@ -71,4 +72,5 @@ export default {
     plural: { row: { one: "صف", many: "صفوف", other: "صفوف" } }
   }),
   ...landingAr,
+  ...adminAr,
 } as const satisfies LanguageMessages
